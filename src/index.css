@@ -1,17 +1,16 @@
 @import "tailwindcss";
 
-html, body {
+html,
+body {
   background-color: #000000;
-  color: #FEFDFD;
-  cursor: none !important;
-
+  color: #fefdfd;
+  /* cursor: none !important; */
 }
 
 ::selection {
   background-color: red;
   color: white;
 }
-
 
 /* Custom Cursor */
 .custom-cursor {
@@ -26,8 +25,6 @@ html, body {
   mix-blend-mode: difference; /* Inverts colors dynamically */
   transition: transform 0.15s ease-out;
 }
-
-
 
 /* Hide cursor on mobile */
 @media (max-width: 768px) {

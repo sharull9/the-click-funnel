@@ -1,45 +1,65 @@
-import { useEffect, useState, useRef } from "react";
+import { AnimatePresence } from "framer-motion";
 import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { cn } from "../lib/utils";
 
 const phrases = [
-  "Professional designs",
-  "for impactful presentations",
-  "that connect.",
+  "Get the perfect pitch",
+  "Make every slide count",
+  "Presentations that win",
+  "Turn ideas into impact",
+];
+
+const colors = [
+  "text-purple-400",
+  "text-yellow-400",
+  "text-blue-400",
+  "text-red-400",
+  "text-green-400",
+  "text-orange-400",
 ];
 
 export default function TextMaskAnimation() {
   const bodyRef = useRef(null);
+  const [index, setIndex] = useState(0);
   const isInView = useInView(bodyRef, { once: true, margin: "0%" });
 
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((state) => {
+        if (state >= phrases.length - 1) return 0;
+        return state + 1;
+      });
+    }, 3000);
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
     if (isInView) setHasAnimated(true);
   }, [isInView]);
 
-  const animation = {
-    initial: { y: "100%" },
-    enter: (i) => ({
-      y: "0",
-      transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1], delay: 0.075 * i },
-    }),
-  };
-
   return (
     <div ref={bodyRef} className="overflow-hidden">
-      {phrases.map((phrase, index) => (
-        <div key={index} className="overflow-hidden">
-          <motion.p
-            className="text-5xl sm:text-4xl md:text-5xl font-bold max-w-4xl leading-none text-left sm:text-left md:text-left text-white"
-            custom={index}
-            variants={animation}
-            initial="initial"
-            animate={hasAnimated ? "enter" : ""}
-          >
-            {phrase}
-          </motion.p>
-        </div>
-      ))}
+      <AnimatePresence mode="wait">
+        <motion.div
+          className={cn(
+            "cursor-pointer tracking-tight text-5xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-none",
+            colors[index]
+          )}
+          key={index}
+          initial={{ rotateX: 90, opacity: 0 }}
+          animate={{ rotateX: 0, opacity: 1 }}
+          exit={{ rotateX: -90, opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          {phrases[index]}
+        </motion.div>
+      </AnimatePresence>
+      <p className="cursor-pointer tracking-tight text-5xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-none text-white">
+        with TheClickFunnel
+      </p>
     </div>
   );
 }

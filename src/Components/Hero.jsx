@@ -1,10 +1,19 @@
 import { motion } from "framer-motion";
-import TextMaskAnimation from "./TextMaskAnimation";
-import { Home, Heart, DollarSign, Globe, Calendar, Briefcase, Users, Gift, Truck } from "lucide-react";
+import {
+  Briefcase,
+  Calendar,
+  DollarSign,
+  Gift,
+  Globe,
+  Heart,
+  Home,
+  Truck,
+  Users,
+} from "lucide-react";
 import { useEffect, useState } from "react";
-import RotatingLabels from "./RotatingLabels.jsx";
 import Button from "../Reusable/Button";
-import SideVid from "../assets/sidevid.webm";
+import RotatingLabels from "./RotatingLabels.jsx";
+import TextMaskAnimation from "./TextMaskAnimation";
 
 const labels = [
   { text: "E-Commerce", color: "#1E90FF", icon: <Home size={16} /> },
@@ -30,75 +39,39 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-[100vh] flex flex-col items-center bg-black overflow-hidden px-2">
-      {/* Background Grid Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:20px_30px] [mask-image:radial-gradient(ellipse_100%_60%_at_50%_0%,#FEFDFD_80%,transparent_140%)]"></div>
 
-      {/* Content */}
-      <div className="relative w-[90%] sm:w-[85%] md:w-[95%] max-w-8xl mx-auto flex flex-col gap-4 text-white z-10 mt-auto pb-6">
-
-        {/* Main Content - Now in two columns */}
-        <div className="relative flex flex-col md:flex-row justify-between items-start w-full mt-auto gap-8">
-          {/* Left Side - Text Content */}
-          <div className="w-full md:w-1/2 flex flex-col">
+      <div className="relative w-[90%] sm:w-[85%] md:w-[95%] max-w-8xl mx-auto flex gap-4 text-white z-10 items-center h-full pb-6">
+        <div className="relative flex flex-col md:flex-row justify-center items-start w-full gap-8">
+          <div className="w-full flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
             <TextMaskAnimation />
-            
-            {/* Description moved below title */}
             <motion.p
-              className="w-full max-w-lg text-gray-300 text-lg mt-6"
+              className="w-full text-gray-300 max-w-[70%] text-lg lg:text-2xl mt-6"
               initial={{ opacity: 0, filter: "blur(10px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}
               transition={{ duration: 1.0, ease: "easeOut", delay: 0.3 }}
             >
-              Transforming ideas into impactful narratives. Resonating with your audience through storytelling, branding, and strategy.
+              Expertly Crafted Designs for Powerful Presentations
             </motion.p>
 
-                   {/* Rotating Labels */}
-            <div className="mt-12">
-              <RotatingLabels labels={labels} />
-            </div>
-
-            {/* Button added below description */}
             <motion.div
               className="mt-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
             >
-<Button
-  to="https://cal.com/theclickfunnel-company-lsgeoq"
-  text="Get In Touch"
-  className="w-full sm:w-fit bg-white text-black hover:bg-gray-200 hover:text-white transition-colors"
-  icon={Users}
-/>
-
+              <Button
+                to="https://cal.com/theclickfunnel-company-lsgeoq"
+                text="Start Project"
+                className="w-full sm:w-fit bg-white text-black hover:bg-gray-200 hover:text-white transition-colors"
+                icon={Users}
+              />
             </motion.div>
 
-    
+            <div className="mt-6 max-w-5xl mx-auto">
+              <RotatingLabels labels={labels} />
+            </div>
           </div>
-
-          {/* Right Side - Video */}
-<motion.div 
-  className="hidden md:flex w-full md:w-1/2 justify-end"
-  initial={{ opacity: 0, x: 50 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
->
-  <div className="relative rounded-xl overflow-hidden border border-gray-700/50 w-full max-w-[600px] h-[450px]">
-    <video 
-      autoPlay 
-      loop 
-      muted 
-      playsInline
-      className="w-full h-full object-cover"
-    >
-      <source src={SideVid} type="video/webm" />
-      Your browser does not support the video tag.
-    </video>
-    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
-  </div>
-</motion.div>
-
-
         </div>
       </div>
     </section>

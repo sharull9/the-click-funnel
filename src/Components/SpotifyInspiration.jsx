@@ -1,6 +1,49 @@
-import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+
+const professionalPlaylists = [
+  {
+    category: "Design Thinkers",
+    playlists: [
+      { id: "37i9dQZF1EIgNZCaOGb0Mi", name: "Design Mode" },
+      { id: "37i9dQZF1DX9sIqqvKsjG8", name: "Instrumental Study" },
+      { id: "37i9dQZF1DX3PFzdbtx1Us", name: "Creative Flow" },
+    ],
+  },
+  {
+    category: "UI/UX Designers",
+    playlists: [
+      { id: "37i9dQZF1DX4dyzvuaRJ0n", name: "Coding Focus" },
+      { id: "37i9dQZF1DX8mWv7JDZ0Ht", name: "Pixel Perfect" },
+      { id: "37i9dQZF1DWZeKCadgRdKQ", name: "Deep Focus" },
+    ],
+  },
+  {
+    category: "Marketers",
+    playlists: [
+      { id: "37i9dQZF1DX0vHZ8elq0UK", name: "Brainstorm Beats" },
+      { id: "37i9dQZF1DX4Wsb4d7NKfP", name: "Productivity Boost" },
+      { id: "37i9dQZF1DX6aTaZa0K6VA", name: "Upbeat Office" },
+    ],
+  },
+  {
+    category: "Content Creators",
+    playlists: [
+      { id: "37i9dQZF1DX6VdMW310YC7", name: "Chill Vibes" },
+      { id: "37i9dQZF1DX4sWSpwq3LiO", name: "Peaceful Piano" },
+      { id: "37i9dQZF1DX4o1oenSJRJd", name: "Narrative Waves" },
+    ],
+  },
+  {
+    category: "Fashion Designers",
+    playlists: [
+      { id: "37i9dQZF1DX8C585qnMYHP", name: "Fashion Forward" },
+      { id: "37i9dQZF1DX2PG4mbkilf3", name: "Runway Ready" },
+      { id: "37i9dQZF1DX5KJJSIYaNvs", name: "Textures & Threads" },
+    ],
+  },
+];
 
 const SpotifyPlaylist = () => {
   const [playlistId, setPlaylistId] = useState("37i9dQZF1EIgNZCaOGb0Mi"); // Default: Design Mode
@@ -13,50 +56,6 @@ const SpotifyPlaylist = () => {
     threshold: 0.1,
   });
 
-  // Curated playlists for creative professionals
-  const professionalPlaylists = [
-    {
-      category: "Design Thinkers",
-      playlists: [
-        { id: "37i9dQZF1EIgNZCaOGb0Mi", name: "Design Mode" },
-        { id: "37i9dQZF1DX9sIqqvKsjG8", name: "Instrumental Study" },
-        { id: "37i9dQZF1DX3PFzdbtx1Us", name: "Creative Flow" }
-      ]
-    },
-    {
-      category: "UI/UX Designers",
-      playlists: [
-        { id: "37i9dQZF1DX4dyzvuaRJ0n", name: "Coding Focus" },
-        { id: "37i9dQZF1DX8mWv7JDZ0Ht", name: "Pixel Perfect" },
-        { id: "37i9dQZF1DWZeKCadgRdKQ", name: "Deep Focus" }
-      ]
-    },
-    {
-      category: "Marketers",
-      playlists: [
-        { id: "37i9dQZF1DX0vHZ8elq0UK", name: "Brainstorm Beats" },
-        { id: "37i9dQZF1DX4Wsb4d7NKfP", name: "Productivity Boost" },
-        { id: "37i9dQZF1DX6aTaZa0K6VA", name: "Upbeat Office" }
-      ]
-    },
-    {
-      category: "Content Creators",
-      playlists: [
-        { id: "37i9dQZF1DX6VdMW310YC7", name: "Chill Vibes" },
-        { id: "37i9dQZF1DX4sWSpwq3LiO", name: "Peaceful Piano" },
-        { id: "37i9dQZF1DX4o1oenSJRJd", name: "Narrative Waves" }
-      ]
-    },
-    {
-      category: "Fashion Designers",
-      playlists: [
-        { id: "37i9dQZF1DX8C585qnMYHP", name: "Fashion Forward" },
-        { id: "37i9dQZF1DX2PG4mbkilf3", name: "Runway Ready" },
-        { id: "37i9dQZF1DX5KJJSIYaNvs", name: "Textures & Threads" }
-      ]
-    }
-  ];
-
   useEffect(() => {
     const fetchToken = async () => {
       try {
@@ -64,7 +63,10 @@ const SpotifyPlaylist = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
-            Authorization: `Basic ${btoa(`${process.env.REACT_APP_SPOTIFY_CLIENT_ID}:${process.env.REACT_APP_SPOTIFY_CLIENT_SECRET}`)}`,
+            Authorization: `Basic ${btoa(
+              // eslint-disable-next-line no-undef
+              `${process.env.REACT_APP_SPOTIFY_CLIENT_ID}:${process.env.REACT_APP_SPOTIFY_CLIENT_SECRET}`
+            )}`,
           },
           body: "grant_type=client_credentials",
         });
@@ -114,23 +116,22 @@ const SpotifyPlaylist = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-8"
         >
-         <div className="flex justify-center items-center mb-8">
-  <span className="text-sm font-semibold text-white uppercase border border-gray-400 px-3 py-1 rounded-md">
-    Focus Music for Creatives
-  </span>
-</div>
+          <div className="flex justify-center items-center mb-8">
+            <span className="text-sm font-semibold text-white uppercase border border-gray-400 px-3 py-1 rounded-md">
+              Focus Music for Creatives
+            </span>
+          </div>
 
-          
           <div className="flex flex-wrap justify-center gap-2 mb-4">
-            {professionalPlaylists.map((category, index) => (
+            {professionalPlaylists.map((category) => (
               <motion.button
                 key={category.category}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  professionalPlaylists.some(cat => 
-                    cat.playlists.some(p => p.id === playlistId)
-                  ) && category.playlists.some(p => p.id === playlistId)
+                  professionalPlaylists.some((cat) =>
+                    cat.playlists.some((p) => p.id === playlistId)
+                  ) && category.playlists.some((p) => p.id === playlistId)
                     ? "bg-white text-black shadow-lg"
                     : "bg-[#282828] text-gray-300 hover:bg-[#383838]"
                 }`}
@@ -142,19 +143,23 @@ const SpotifyPlaylist = () => {
           </div>
 
           {/* Playlist Selector */}
-          {professionalPlaylists.map(category => (
+          {professionalPlaylists.map((category) => (
             <motion.div
               key={category.category}
               initial={{ opacity: 0 }}
               animate={{
-                opacity: category.playlists.some(p => p.id === playlistId) ? 1 : 0,
-                height: category.playlists.some(p => p.id === playlistId) ? 'auto' : 0
+                opacity: category.playlists.some((p) => p.id === playlistId)
+                  ? 1
+                  : 0,
+                height: category.playlists.some((p) => p.id === playlistId)
+                  ? "auto"
+                  : 0,
               }}
               transition={{ duration: 0.4 }}
               className="overflow-hidden"
             >
               <div className="flex flex-wrap justify-center gap-2 mb-6">
-                {category.playlists.map(playlist => (
+                {category.playlists.map((playlist) => (
                   <motion.button
                     key={playlist.id}
                     whileHover={{ scale: 1.05 }}
@@ -186,7 +191,8 @@ const SpotifyPlaylist = () => {
               {playlistData.name}
             </h2>
             <p className="text-gray-400 text-sm sm:text-base">
-              {playlistData.tracks.total} tracks • {playlistData.description || "Curated for focus"}
+              {playlistData.tracks.total} tracks •{" "}
+              {playlistData.description || "Curated for focus"}
             </p>
           </motion.div>
         )}
@@ -196,10 +202,10 @@ const SpotifyPlaylist = () => {
           ref={ref}
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.98 }}
-          transition={{ 
-            duration: 0.8, 
+          transition={{
+            duration: 0.8,
             ease: [0.16, 1, 0.3, 1],
-            delay: 0.4
+            delay: 0.4,
           }}
           className="relative rounded-xl overflow-hidden shadow-2xl bg-[#181818]"
         >
@@ -211,8 +217,8 @@ const SpotifyPlaylist = () => {
                   transition: {
                     duration: 2,
                     repeat: Infinity,
-                    ease: "linear"
-                  }
+                    ease: "linear",
+                  },
                 }}
                 className="w-12 h-12 border-4 border-[#1DB954] border-t-transparent rounded-full"
               ></motion.div>
@@ -233,7 +239,6 @@ const SpotifyPlaylist = () => {
             ></iframe>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

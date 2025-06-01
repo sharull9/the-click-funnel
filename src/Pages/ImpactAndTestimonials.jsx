@@ -6,39 +6,67 @@ const stats = [
   { value: "120+", label: "Active Clients" },
   { value: "50+", label: "Team Members" },
   { value: "500+", label: "Projects Delivered" },
-  { value: "5+", label: "Years of Experience" }
+  { value: "5+", label: "Years of Experience" },
 ];
 
 const testimonials = [
   {
-    quote: "Their pitch deck helped us secure $2M in seed funding. The storytelling and design were impeccable.",
+    quote:
+      "Their pitch deck helped us secure $2M in seed funding. The storytelling and design were impeccable.",
     author: "Rahul Sharma",
     company: "EduTech Startup",
-    rating: 5
+    rating: 5,
   },
   {
-    quote: "The business plan they created was instrumental in getting bank approval for our expansion loan.",
+    quote:
+      "The business plan they created was instrumental in getting bank approval for our expansion lo an.",
     author: "Priya Patel",
     company: "HealthTech Company",
-    rating: 5
+    rating: 5,
   },
   {
-    quote: "Exceptional service! They understood our vision and translated it into a compelling investor presentation.",
+    quote:
+      "Exceptional service! They understood our vision and translated it into a compelling investor presentation.",
     author: "Arjun Mehta",
     company: "FinTech Founder",
-    rating: 5
-  }
+    rating: 5,
+  },
+  {
+    quote:
+      "Excellent Services. They are very friendly, patient and helpful in helping us find what we were looking for. Thanks!!",
+    company: "BootsRad",
+    rating: 5,
+  },
+  {
+    quote:
+      "I had a great experience with them. Team is very friendly and highly professional.",
+    author: "Navnit Kumar",
+    rating: 5,
+  },
+  {
+    quote: "Excellent support and quick development by team theclickfunnel.",
+    author: "Ravindra Raul",
+    rating: 5,
+  },
 ];
 
 const ImpactAndTestimonials = () => {
-  const [titleRef, titleInView] = useInView({ triggerOnce: true, threshold: 0.3 });
-  const [statsRef, statsInView] = useInView({ triggerOnce: true, threshold: 0.2 });
-  const [testimonialsRef, testimonialsInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [titleRef, titleInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
+  const [statsRef, statsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+  const [testimonialsRef, testimonialsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
     <section className="relative w-full flex flex-col items-center bg-gray-50 overflow-hidden px-2 py-16 sm:py-20">
       <div className="relative w-[90%] sm:w-[85%] md:w-[95%] max-w-8xl mx-auto">
-        
         {/* Impact Section */}
         <div className="mb-16" ref={titleRef}>
           <motion.div
@@ -63,18 +91,20 @@ const ImpactAndTestimonials = () => {
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-                animate={{ 
-                  opacity: statsInView ? 1 : 0, 
+                animate={{
+                  opacity: statsInView ? 1 : 0,
                   y: statsInView ? 0 : 30,
-                  filter: statsInView ? "blur(0px)" : "blur(8px)"
+                  filter: statsInView ? "blur(0px)" : "blur(8px)",
                 }}
-                transition={{ 
+                transition={{
                   duration: 0.6,
-                  delay: index * 0.15
+                  delay: index * 0.15,
                 }}
                 className="bg-white p-6 rounded-lg shadow-md text-left"
               >
-                <p className="text-4xl font-bold text-black mb-2">{stat.value}</p>
+                <p className="text-4xl font-bold text-black mb-2">
+                  {stat.value}
+                </p>
                 <p className="text-gray-600">{stat.label}</p>
               </motion.div>
             ))}
@@ -85,9 +115,9 @@ const ImpactAndTestimonials = () => {
         <div ref={testimonialsRef}>
           <motion.div
             initial={{ opacity: 0, filter: "blur(8px)" }}
-            animate={{ 
+            animate={{
               opacity: testimonialsInView ? 1 : 0,
-              filter: testimonialsInView ? "blur(0px)" : "blur(8px)"
+              filter: testimonialsInView ? "blur(0px)" : "blur(8px)",
             }}
             transition={{ duration: 0.6 }}
             className="text-left mb-12"
@@ -99,7 +129,8 @@ const ImpactAndTestimonials = () => {
               What Clients Say About Us
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl">
-              Check out the glowing reviews from our clients who have trusted us to craft their brand stories and digital marketing strategies.
+              Check out the glowing reviews from our clients who have trusted us
+              to craft their brand stories and digital marketing strategies.
             </p>
           </motion.div>
 
@@ -108,14 +139,14 @@ const ImpactAndTestimonials = () => {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-                animate={{ 
-                  opacity: testimonialsInView ? 1 : 0, 
+                animate={{
+                  opacity: testimonialsInView ? 1 : 0,
                   y: testimonialsInView ? 0 : 30,
-                  filter: testimonialsInView ? "blur(0px)" : "blur(8px)"
+                  filter: testimonialsInView ? "blur(0px)" : "blur(8px)",
                 }}
-                transition={{ 
+                transition={{
                   duration: 0.6,
-                  delay: index * 0.2
+                  delay: index * 0.2,
                 }}
                 className="bg-white p-8 rounded-xl shadow-lg text-left"
               >
@@ -123,7 +154,11 @@ const ImpactAndTestimonials = () => {
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                      className={`w-5 h-5 ${
+                        i < testimonial.rating
+                          ? "text-yellow-400"
+                          : "text-gray-300"
+                      }`}
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -131,10 +166,20 @@ const ImpactAndTestimonials = () => {
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-700 italic mb-6">"{testimonial.quote}"</p>
+                <p className="text-gray-700 italic mb-6">
+                  "{testimonial.quote}"
+                </p>
                 <div className="border-t border-gray-100 pt-4">
-                  <p className="font-semibold text-black">{testimonial.author}</p>
-                  <p className="text-sm text-gray-500">{testimonial.company}</p>
+                  {testimonial.author && (
+                    <p className="font-semibold text-black">
+                      {testimonial.author}
+                    </p>
+                  )}
+                  {testimonial.company && (
+                    <p className="text-sm text-gray-500">
+                      {testimonial.company}
+                    </p>
+                  )}
                 </div>
               </motion.div>
             ))}

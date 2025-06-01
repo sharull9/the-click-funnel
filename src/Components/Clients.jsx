@@ -2,37 +2,37 @@ import { motion } from "framer-motion";
 
 const Clients = () => {
   const companies = [
-    { 
-      name: "Wagner", 
-      logo: "https://cdn.wagner-group.com/assets/img/wagner-logo.png" 
+    {
+      name: "Wagner",
+      logo: "https://cdn.wagner-group.com/assets/img/wagner-logo.png",
     },
-    { 
-      name: "Aceleron", 
-      logo: "https://media.licdn.com/dms/image/v2/C4D0BAQEQMEylVrMpBw/company-logo_200_200/company-logo_200_200/0/1630500778364/aceleron_logo?e=2147483647&v=beta&t=q0g5d4PxuouHYlEdDGHpXB4VzV7E5INLJT3Uax-bkXM" 
+    {
+      name: "Aceleron",
+      logo: "https://media.licdn.com/dms/image/v2/C4D0BAQEQMEylVrMpBw/company-logo_200_200/company-logo_200_200/0/1630500778364/aceleron_logo?e=2147483647&v=beta&t=q0g5d4PxuouHYlEdDGHpXB4VzV7E5INLJT3Uax-bkXM",
     },
-    { 
-      name: "AFM Properties LLC", 
-      logo: "https://sdn.signalhire.co/storage/company/2939/74b1/d23d/5502/d391/7156/f772/d162.webp" 
+    {
+      name: "AFM Properties LLC",
+      logo: "https://sdn.signalhire.co/storage/company/2939/74b1/d23d/5502/d391/7156/f772/d162.webp",
     },
-    { 
-      name: "Honda", 
-      logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Honda_Logo.svg" 
+    {
+      name: "Honda",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Honda_Logo.svg",
     },
-    { 
-      name: "Pafex", 
-      logo: "https://pafex.in/assets/img/logo.png" 
+    {
+      name: "Pafex",
+      logo: "https://pafex.in/assets/img/logo.png",
     },
-    { 
-      name: "Parle", 
-      logo: "https://upload.wikimedia.org/wikipedia/en/archive/d/d5/20220309083632%21Parle_Products_logo.svg" 
+    {
+      name: "Parle",
+      logo: "https://upload.wikimedia.org/wikipedia/en/archive/d/d5/20220309083632%21Parle_Products_logo.svg",
     },
-    { 
-      name: "Mindtel Global",  
-      logo: "https://mindtelglobal.com/wp-content/uploads/2025/01/Logo.webp" 
+    {
+      name: "Mindtel Global",
+      logo: "https://mindtelglobal.com/wp-content/uploads/2025/01/Logo.webp",
     },
-    { 
-      name: "Majestic Home", 
-      logo: "https://yt3.googleusercontent.com/ytc/AIdro_lLC5vjBaYsMsG4arBpJ6TSjO8cUcXdJepYYC6xY1fXgQ=s900-c-k-c0x00ffffff-no-rj" 
+    {
+      name: "Majestic Home",
+      logo: "https://yt3.googleusercontent.com/ytc/AIdro_lLC5vjBaYsMsG4arBpJ6TSjO8cUcXdJepYYC6xY1fXgQ=s900-c-k-c0x00ffffff-no-rj",
     },
   ];
 
@@ -40,16 +40,15 @@ const Clients = () => {
   const scrollingItems = [...companies, ...companies, ...companies];
 
   return (
-    <div className="relative w-full overflow-hidden bg-white rounded-t-4xl py-6 sm:py-10">
+    <div className="relative w-full overflow-hidden bg-white py-6 sm:py-10">
       <motion.div
         className="text-center mb-4 sm:mb-6 px-4"
         initial={{ opacity: 0, filter: "blur(10px)" }}
         animate={{ opacity: 1, filter: "blur(0px)" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h2 className="text-lg sm:text-xl font-bold text-black leading-snug">
-          <div>Empowering emerging startups, creators,</div>
-          <div>and visionaries to pitch with clarity and confidence</div>
+        <h2 className="text-lg sm:text-2xl font-bold text-black leading-snug">
+          Trusted By Leading Entrepreneurs & Investors
         </h2>
       </motion.div>
 
@@ -77,14 +76,16 @@ const Clients = () => {
                 animate={{ opacity: 1, filter: "blur(0px)" }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                <img 
-                  src={logo} 
+                <img
+                  src={logo}
                   alt={name}
                   className="max-h-full max-w-full object-contain transition-opacity hover:opacity-80"
                   loading="lazy"
                 />
               </motion.div>
-              <span className="mt-2 text-xs sm:text-sm text-gray-500 font-medium">{name}</span>
+              <span className="mt-2 text-xs sm:text-sm text-gray-500 font-medium">
+                {name}
+              </span>
             </div>
           ))}
         </motion.div>

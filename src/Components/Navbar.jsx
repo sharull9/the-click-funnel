@@ -13,17 +13,17 @@ import {
 import logo from "../assets/logo.png"; // Ensure this logo matches Click Funnel branding
 import Button from "../Reusable/Button";
 
+const navLinks = [
+  { id: "portfolio", name: "Portfolio" },
+  { id: "about", name: "About" },
+  { id: "services", name: "Services" },
+  { id: "industries", name: "Industries Served" },
+];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-
-  const navLinks = [
-    { id: "about", name: "About" },
-    { id: "services", name: "Services" },
-    { id: "casestudies", name: "Case Studies" },
-    { id: "industries", name: "Industries Served" },
-  ];
 
   // Scroll event listener to detect active section
   useEffect(() => {
