@@ -1,51 +1,29 @@
 import React from "react";
 import { Carousel, CarouselContent, CarouselItem } from "../Reusable/Carousel";
 import { Card, CardContent } from "../Reusable/Card";
+import Autoplay from "embla-carousel-autoplay";
+import { cn } from "../lib/utils";
 
-const portfolioItems = [
-  {
-    id: 1,
-    title: "Brand Identity Design",
-    description: "Complete brand identity redesign for a tech startup",
-    image:
-      "https://images.unsplash.com/photo-1747171232839-a5fea879ca59?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Branding",
-  },
-  {
-    id: 2,
-    title: "E-commerce Platform",
-    description: "Modern e-commerce solution with seamless user experience",
-    image:
-      "https://images.unsplash.com/photo-1747171232839-a5fea879ca59?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Web Development",
-  },
-  {
-    id: 3,
-    title: "Mobile App Design",
-    description: "Intuitive mobile application for fitness tracking",
-    image:
-      "https://images.unsplash.com/photo-1747171232839-a5fea879ca59?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Mobile Design",
-  },
-  {
-    id: 4,
-    title: "Corporate Website",
-    description: "Professional website for a consulting firm",
-    image:
-      "https://images.unsplash.com/photo-1747171232839-a5fea879ca59?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Web Design",
-  },
-  {
-    id: 5,
-    title: "Marketing Campaign",
-    description: "Comprehensive digital marketing strategy and execution",
-    image:
-      "https://images.unsplash.com/photo-1747171232839-a5fea879ca59?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Marketing",
-  },
-];
+const portfolioItems = Array.from({ length: 10 }, (_, i) => ({
+  id: i + 1,
+  title: `Portfolio Item ${i + 1}`,
+  image: `/portfolio/image-${i + 1}.jpg`,
+}));
 
 export default function Portfolio() {
+  const [api, setApi] = React.useState();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!api) return;
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
   return (
     <div
       id="portfolio"
@@ -66,12 +44,18 @@ export default function Portfolio() {
           align: "start",
           loop: true,
         }}
+        setApi={setApi}
+        plugins={[
+          Autoplay({
+            delay: 2000,
+          }),
+        ]}
       >
         <CarouselContent className="-ml-2 md:-ml-4">
           {portfolioItems.map((item) => (
             <CarouselItem
               key={item.id}
-              className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
+              className={cn("pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3", {})}
             >
               <Card className="border-0 shadow-none bg-transparent group cursor-pointer">
                 <CardContent className="p-0">
@@ -85,25 +69,26 @@ export default function Portfolio() {
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                   </div>
-                  <div className="pt-6">
-                    <div className="mb-2">
-                      <span className="text-xs font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full uppercase">
-                        {item.category}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-semibold text-black mb-1 group-hover:text-gray-700 transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm font-medium leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
                 </CardContent>
               </Card>
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
+      <div className="mt-4 flex items-center justify-center gap-2">
+        {Array.from({ length: count }).map((_, index) => (
+          <button
+            key={index}
+            onClick={() => api?.scrollTo(index)}
+            className={cn(
+              "h-3.5 w-3.5 rounded-full cursor-pointer border-gray-400 border-2",
+              {
+                "border-black": current === index + 1,
+              }
+            )}
+          />
+        ))}
+      </div>
     </div>
   );
 }

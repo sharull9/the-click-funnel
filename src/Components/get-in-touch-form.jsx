@@ -1,4 +1,7 @@
-import { Mail, MapPin, Phone, SendIcon } from "lucide-react";
+import { Mail, MapPin, Phone, SendIcon, XIcon } from "lucide-react";
+import { useState } from "react";
+import { cn } from "../lib/utils";
+import { Alert, AlertDescription } from "../Reusable/Alert";
 import { Input } from "../Reusable/Input";
 import { Textarea } from "../Reusable/Textarea";
 
@@ -9,17 +12,60 @@ const details = {
 };
 
 export default function GetInTouchForm() {
+  const [isAlertVisible, setIsAlertVisible] = useState(true);
+  const [showFeedback, setShowFeedback] = useState({
+    message: "",
+    status: false,
+  });
+
+  const showAlert = () => {
+    setIsAlertVisible(true);
+  };
+  const hideAlert = () => {
+    setIsAlertVisible(false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch("http://theclickfunnel.in/mail.class.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok)
+        throw new Error(`HTTP error! status: ${response.status}`);
+
+      await response.text();
+      setShowFeedback({
+        show: true,
+        message: "Thank you for your message. \n We'll get back to you soon.",
+        status: true,
+      });
+    } catch {
+      setShowFeedback({
+        show: true,
+        message: "Something went wrong. Please try again later.",
+        status: false,
+      });
+    } finally {
+      showAlert();
+    }
+  };
+
   return (
-    <section className="w-full bg-gray-100 py-16">
+    <section id="contactus" className="w-full bg-gray-100 py-16">
       <div className="w-[90%] sm:w-[85%] md:w-[95%] max-w-8xl mx-auto">
-        <div className="bg-gradient-to-br from-black via-black to-gray-200 rounded-3xl p-6 md:p-12">
+        <div className="bg-gradient-to-br from-blue-700 via-blue-700 to-gray-200 rounded-3xl p-6 md:p-12">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="text-white space-y-8">
               <div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-4">
                   Get in touch
                 </h2>
-                <p className="text-gray-400 text-lg leading-relaxed">
+                <p className="text-gray-200 text-lg leading-relaxed">
                   We’d love to hear from you. Let's talk about it!
                 </p>
               </div>
@@ -27,7 +73,7 @@ export default function GetInTouchForm() {
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="flex-shrink-0">
-                    <Phone className="w-6 h-6 text-gray-400" />
+                    <Phone className="w-6 h-6 text-gray-200" />
                   </div>
                   <span className="text-lg font-medium">
                     {details.phone.map((phone, index) => (
@@ -41,7 +87,7 @@ export default function GetInTouchForm() {
 
                 <div className="flex items-center gap-4">
                   <div className="flex-shrink-0">
-                    <Mail className="w-6 h-6 text-gray-400" />
+                    <Mail className="w-6 h-6 text-gray-200" />
                   </div>
                   <span className="text-lg font-medium">
                     <a href={`mailto:${details.email}`}>{details.email}</a>
@@ -50,7 +96,7 @@ export default function GetInTouchForm() {
 
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 mt-1">
-                    <MapPin className="w-6 h-6 text-gray-400" />
+                    <MapPin className="w-6 h-6 text-gray-200" />
                   </div>
                   <div className="text-lg font-medium leading-relaxed">
                     {details.address}
@@ -60,7 +106,7 @@ export default function GetInTouchForm() {
             </div>
 
             <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-10">
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-gray-700 font-medium">
@@ -68,6 +114,7 @@ export default function GetInTouchForm() {
                     </label>
                     <Input
                       id="name"
+                      name="name"
                       placeholder="Enter your name"
                       className="border-gray-300 placeholder:text-gray-400 text-black focus:border-black"
                       required
@@ -83,6 +130,7 @@ export default function GetInTouchForm() {
                     <Input
                       id="phone"
                       type="tel"
+                      name="phone"
                       placeholder="Enter your phone number"
                       className="border-gray-300 placeholder:text-gray-400 text-black focus:border-black"
                       required
@@ -97,6 +145,7 @@ export default function GetInTouchForm() {
                   <Input
                     id="email"
                     type="email"
+                    name="email"
                     placeholder="Enter your email"
                     className="border-gray-300 placeholder:text-gray-400 text-black focus:border-black"
                     required
@@ -111,15 +160,39 @@ export default function GetInTouchForm() {
                     Comments
                   </label>
                   <Textarea
-                    id="comments"
+                    id="comment"
+                    name="comment"
                     placeholder="Enter your comments"
                     className="border-gray-300 placeholder:text-gray-400 text-black min-h-[120px] resize-none focus:border-black"
                   />
                 </div>
 
+                {isAlertVisible && (
+                  <>
+                    <Alert
+                      variant={showFeedback.status ? "destructive" : ""}
+                      className={cn(
+                        "flex justify-between items-center pr-2 [&>svg+div]:translate-y-0",
+                        showFeedback.status &&
+                          "border-emerald-600/50 text-emerald-600 dark:border-emerald-600 [&>svg]:text-emerald-600"
+                      )}
+                    >
+                      <AlertDescription>
+                        {showFeedback.message}
+                      </AlertDescription>
+                      <button
+                        className="!pl-0 cursor-pointer"
+                        onClick={hideAlert}
+                      >
+                        <XIcon className="h-5 w-5" />
+                      </button>
+                    </Alert>
+                  </>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 bg-black text-white font-semibold py-3 rounded-lg transition-colors"
+                  className="w-full flex items-center justify-center gap-2 bg-blue-500 cursor-pointer text-white font-semibold py-3 rounded-lg transition-colors"
                 >
                   <SendIcon className="size-4" />
                   Submit

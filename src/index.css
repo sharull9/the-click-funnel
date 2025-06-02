@@ -8,7 +8,7 @@ body {
 }
 
 ::selection {
-  background-color: red;
+  background-color: var(--color-blue-600);
   color: white;
 }
 

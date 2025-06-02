@@ -12,27 +12,6 @@ const stats = [
 const testimonials = [
   {
     quote:
-      "Their pitch deck helped us secure $2M in seed funding. The storytelling and design were impeccable.",
-    author: "Rahul Sharma",
-    company: "EduTech Startup",
-    rating: 5,
-  },
-  {
-    quote:
-      "The business plan they created was instrumental in getting bank approval for our expansion lo an.",
-    author: "Priya Patel",
-    company: "HealthTech Company",
-    rating: 5,
-  },
-  {
-    quote:
-      "Exceptional service! They understood our vision and translated it into a compelling investor presentation.",
-    author: "Arjun Mehta",
-    company: "FinTech Founder",
-    rating: 5,
-  },
-  {
-    quote:
       "Excellent Services. They are very friendly, patient and helpful in helping us find what we were looking for. Thanks!!",
     company: "BootsRad",
     rating: 5,
@@ -102,7 +81,7 @@ const ImpactAndTestimonials = () => {
                 }}
                 className="bg-white p-6 rounded-lg shadow-md text-left"
               >
-                <p className="text-4xl font-bold text-black mb-2">
+                <p className="text-4xl font-bold text-green-500 mb-2">
                   {stat.value}
                 </p>
                 <p className="text-gray-600">{stat.label}</p>

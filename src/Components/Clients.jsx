@@ -71,7 +71,7 @@ const Clients = () => {
               className="mx-4 sm:mx-6 flex flex-col items-center min-w-[95px] sm:min-w-[110px]"
             >
               <motion.div
-                className="w-12 h-12 sm:w-12 sm:h-12 flex items-center justify-center"
+                className="w-12 h-12 sm:size-16 md:size-20 flex items-center justify-center"
                 initial={{ opacity: 0, filter: "blur(10px)" }}
                 animate={{ opacity: 1, filter: "blur(0px)" }}
                 transition={{ duration: 0.8, ease: "easeOut" }}

@@ -1,16 +1,7 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { Facebook, Instagram, Linkedin, Menu, Users, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-scroll"; // Import Link from react-scroll
-import {
-  Users,
-  X,
-  Menu,
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-} from "lucide-react";
-import logo from "../assets/logo.png"; // Ensure this logo matches Click Funnel branding
 import Button from "../Reusable/Button";
 
 const navLinks = [
@@ -54,22 +45,22 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] z-50 
-      transition-all duration-300 rounded-2xl shadow-lg 
+      transition-all duration-300 rounded-2xl shadow-lg container mx-auto 
       ${isScrolled ? "bg-white/90 backdrop-blur-lg" : "bg-white"}`}
     >
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center py-3 relative">
+      <div className=" px-4 sm:px-6">
+        <div className="flex justify-between items-center  relative">
           {/* Logo */}
-          <a href="/" className="z-50">
+          <a href="/" className="z-50 overflow-hidden">
             <img
-              src={logo}
-              alt="Click Funnel Logo" // Updated alt text
-              className="h-8 md:h-10 transition-all duration-300 hover:opacity-80"
+              src="/assets/the-click-funnel.png"
+              alt="Click Funnel Logo"
+              className="h-8 lg:h-16 w-26 scale-125 object-contain transition-all duration-300 hover:opacity-80"
             />
           </a>
 
           {/* Desktop Navigation - Centered */}
-          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
+          <div className="hidden md:flex absolute left-1/2 py-3 transform -translate-x-1/2">
             <div className="flex space-x-2">
               {navLinks.map((link) => (
                 <Link
@@ -94,8 +85,7 @@ const Navbar = () => {
           {/* Desktop CTA Button - Right */}
           <div className="hidden md:block">
             <Button
-              to="https://docs.google.com/forms/d/e/1FAIpQLSfhJFAPimcXXMIBclKNzmY7BYF87KNVBbSenjB9xIbY41eU2w/viewform?usp=header"
-              target="_blank"
+              to="#contactus"
               className="bg-black cursor-pointer text-white"
               text="Get In Touch"
               icon={Users}
