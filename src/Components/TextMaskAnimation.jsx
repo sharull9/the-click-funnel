@@ -46,7 +46,7 @@ export default function TextMaskAnimation() {
 
   return (
     <div className="relative w-full">
-      <div className="absolute inset-0 size-full flex items-center translate-x-0 justify-end z-0">
+      <div className="absolute inset-0 size-full flex items-center translate-x-45 lg:translate-x-15 justify-end z-0">
         <AnimatePresence mode="wait">
           <motion.div
             className={cn(
