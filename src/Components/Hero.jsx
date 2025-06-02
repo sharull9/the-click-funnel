@@ -56,7 +56,7 @@ const Hero = () => {
             </motion.p>
 
             <motion.div
-              className="mt-8 flex items-center gap-4"
+              className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}

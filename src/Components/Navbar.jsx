@@ -136,7 +136,7 @@ const Navbar = () => {
                   ))}
 
                   <Button
-                    to="https://cal.com/theclickfunnel-company-lsgeoq"
+                    to="#contactus"
                     text="Get In Touch"
                     className="bg-black text-white"
                     icon={Users}

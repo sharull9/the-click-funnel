@@ -12,7 +12,7 @@ const details = {
 };
 
 export default function GetInTouchForm() {
-  const [isAlertVisible, setIsAlertVisible] = useState(true);
+  const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [showFeedback, setShowFeedback] = useState({
     message: "",
     status: false,
