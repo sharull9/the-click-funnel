@@ -42,7 +42,7 @@ const Footer = () => {
               <img
                 src="/assets/the-click-funnel-bg.jpg"
                 alt="Click Funnel Logo"
-                className="h-8 lg:h-16 w-26 object-contain transition-all duration-300 "
+                className="h-16 w-26 object-contain transition-all duration-300 "
               />
             </div>
             <p className="text-gray-400">

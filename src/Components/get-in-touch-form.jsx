@@ -28,7 +28,7 @@ export default function GetInTouchForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-
+    hideAlert();
     try {
       const response = await fetch("http://theclickfunnel.in/mail.class.php", {
         method: "POST",
@@ -40,13 +40,11 @@ export default function GetInTouchForm() {
 
       await response.text();
       setShowFeedback({
-        show: true,
         message: "Thank you for your message. \n We'll get back to you soon.",
         status: true,
       });
     } catch {
       setShowFeedback({
-        show: true,
         message: "Something went wrong. Please try again later.",
         status: false,
       });
