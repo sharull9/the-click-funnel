@@ -30,7 +30,7 @@ export default function GetInTouchForm() {
     const formData = new FormData(e.target);
     hideAlert();
     try {
-      const response = await fetch("http://theclickfunnel.in/mail.class.php", {
+      const response = await fetch("https://theclickfunnel.in/mail.class.php", {
         method: "POST",
         body: formData,
       });
