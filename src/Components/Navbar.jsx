@@ -55,7 +55,7 @@ const Navbar = () => {
             <img
               src="/assets/the-click-funnel.png"
               alt="Click Funnel Logo"
-              className="h-8 lg:h-16 w-26 scale-125 object-contain transition-all duration-300 hover:opacity-80"
+              className="h-8 w-12 lg:h-16 lg:w-26 scale-125 object-contain transition-all duration-300 hover:opacity-80"
             />
           </a>
 

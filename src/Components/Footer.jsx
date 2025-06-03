@@ -38,8 +38,12 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="space-y-4"
           >
-            <div className="flex items-center">
-              <img src={logo} alt="Click Funnel Logo" className="h-12 mr-2" />
+            <div className="flex items-center bg-white w-fit rounded-md">
+              <img
+                src="/assets/the-click-funnel-bg.jpg"
+                alt="Click Funnel Logo"
+                className="h-8 lg:h-16 w-26 object-contain transition-all duration-300 "
+              />
             </div>
             <p className="text-gray-400">
               Crafting powerful presentations that convert and captivate
