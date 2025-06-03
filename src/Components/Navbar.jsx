@@ -2,7 +2,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Menu, Users, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-scroll"; // Import Link from react-scroll
-import Button from "../Reusable/Button";
+import { cn } from "../lib/utils";
+import { Link as ButtonLink } from "../Reusable/Button";
 
 const navLinks = [
   { id: "portfolio", name: "Portfolio" },
@@ -44,9 +45,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] z-50 
-      transition-all duration-300 rounded-2xl shadow-lg container mx-auto 
-      ${isScrolled ? "bg-white/90 backdrop-blur-lg" : "bg-white"}`}
+      className={cn(
+        "fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] z-50 transition-all duration-300 rounded lg:rounded-full border overflow-hidden shadow-lg container mx-auto",
+        isScrolled ? "bg-white/90 backdrop-blur-lg" : "bg-white"
+      )}
     >
       <div className=" px-4 sm:px-6">
         <div className="flex justify-between items-center  relative">
@@ -84,9 +86,9 @@ const Navbar = () => {
 
           {/* Desktop CTA Button - Right */}
           <div className="hidden md:block">
-            <Button
+            <ButtonLink
               to="#contactus"
-              className="bg-black cursor-pointer text-white"
+              className="cursor-pointer"
               text="Get In Touch"
               icon={Users}
             />
@@ -135,7 +137,7 @@ const Navbar = () => {
                     </Link>
                   ))}
 
-                  <Button
+                  <Link
                     to="#contactus"
                     text="Get In Touch"
                     className="bg-black text-white"

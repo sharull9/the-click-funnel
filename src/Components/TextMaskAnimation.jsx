@@ -46,7 +46,7 @@ export default function TextMaskAnimation() {
 
   return (
     <div className="relative w-full">
-      <div className="absolute inset-0 size-full flex items-center translate-x-45 lg:translate-x-15 justify-end z-0">
+      <div className="absolute inset-0 size-full hidden md:flex items-center translate-x-55 lg:translate-x-15 justify-end z-0">
         <AnimatePresence mode="wait">
           <motion.div
             className={cn(
@@ -67,10 +67,30 @@ export default function TextMaskAnimation() {
         </AnimatePresence>
       </div>
       <div className="relative z-10 flex items-center justify-center flex-col">
+        <div className="md:hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              className={cn(
+                "size-80 rounded-full flex items-center justify-center transition-colors",
+                phrases[index].bgcolor
+              )}
+            >
+              <motion.img
+                src={phrases[index].img}
+                initial={{ rotateX: 90, opacity: 0 }}
+                animate={{ rotateX: 0, opacity: 1 }}
+                exit={{ rotateX: -90, opacity: 0 }}
+                transition={transition}
+                alt={phrases[index].label}
+                className="size-56 object-cover rounded-md"
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
         <AnimatePresence mode="wait">
           <motion.div
             className={cn(
-              "cursor-pointer tracking-tight flex gap-1 text-5xl sm:text-4xl md:text-5xl lg:text-7xl leading-15 sm:leading-12 md:leading-15 lg:leading-22 font-bold",
+              "cursor-pointer tracking-tight flex gap-1 text-[34px] sm:text-4xl md:text-5xl lg:text-8xl leading-15 sm:leading-12 md:leading-15 lg:leading-28 font-bold",
               phrases[index].textcolor
             )}
             key={index}
@@ -82,7 +102,7 @@ export default function TextMaskAnimation() {
             <p>{phrases[index].label}</p>
           </motion.div>
         </AnimatePresence>
-        <p className="cursor-pointer tracking-tight text-5xl sm:text-4xl md:text-5xl leading-15 sm:leading-12 md:leading-15 lg:leading-22 lg:text-7xl font-bold text-white">
+        <p className="cursor-pointer tracking-tight text-[34px] sm:text-4xl md:text-5xl leading-15 sm:leading-12 md:leading-15 lg:leading-28 lg:text-8xl font-bold text-white">
           with TheClickFunnel
         </p>
       </div>

@@ -1,7 +1,8 @@
-import React from "react";
 import { motion } from "framer-motion";
+import React from "react";
 import { useInView } from "react-intersection-observer";
-import Button from "../Reusable/Button.jsx";
+import Heading from "../Reusable/Heading.jsx";
+import { Link } from "../Reusable/Button.jsx";
 
 const About = () => {
   const [headingRef, headingInView] = useInView({
@@ -48,9 +49,9 @@ const About = () => {
               <span className="text-sm font-semibold text-black uppercase inline-block border border-gray-400 px-3 py-1 rounded-md">
                 Who We Are
               </span>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-blue-600 pt-4">
+              <Heading className="text-blue-600" as="h2">
                 Elevating Your Pitch, Perfecting Your Story
-              </h2>
+              </Heading>
             </motion.div>
 
             <motion.p
@@ -96,11 +97,7 @@ const About = () => {
               </motion.p>
             </motion.div>
 
-            <Button
-              to="https://cal.com/theclickfunnel-company-lsgeoq"
-              className="bg-blue-700 hover:bg-blue-600 text-white hover:text-white transition-all w-full md:w-auto mt-6"
-              text="Let’s Talk"
-            />
+            <Link to="#contactus" className="w-full mt-6" text="Let’s Talk" />
           </div>
         </div>
       </div>

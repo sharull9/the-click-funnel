@@ -1,7 +1,7 @@
-import React from "react";
 import { motion } from "framer-motion";
+import React from "react";
 import { useInView } from "react-intersection-observer";
-import Button from "../Reusable/Button.jsx";
+import { Link } from "../Reusable/Button.jsx";
 
 const GetInTouch = () => {
   const [ref, inView] = useInView({
@@ -16,7 +16,7 @@ const GetInTouch = () => {
       animate={{ opacity: inView ? 1 : 0 }}
       transition={{ duration: 0.8 }}
       className="w-full bg-black py-16"
-      id="contact"  // Added for navbar navigation
+      id="contact" // Added for navbar navigation
     >
       <div className="w-[90%] sm:w-[85%] md:w-[95%] max-w-8xl mx-auto">
         <motion.div
@@ -40,7 +40,8 @@ const GetInTouch = () => {
                 <span className="block">Crafted for Your Success</span>
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Let our expert team transform your business story into a compelling pitch that attracts investors and accelerates growth.
+                Let our expert team transform your business story into a
+                compelling pitch that attracts investors and accelerates growth.
               </p>
             </motion.div>
 
@@ -51,13 +52,13 @@ const GetInTouch = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Button
-                to="https://cal.com/theclickfunnel-company-lsgeoq"
+              <Link
+                to="#contactus"
                 className="bg-black text-white hover:bg-black transition-all"
                 text="Get Started Now"
               />
-              <Button
-                to="https://theclickfunnel.com/"  // Linking to services section
+              <Link
+                to="https://theclickfunnel.com/" // Linking to services section
                 className="border border-black text-black bg-transparent hover:bg-black hover:text-white transition-all"
                 text="The Click Funnel"
               />

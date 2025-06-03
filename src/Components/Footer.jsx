@@ -1,9 +1,7 @@
-import React from "react";
 import { motion } from "framer-motion";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
+import React from "react";
 import { useInView } from "react-intersection-observer";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
-import logo from "../assets/whitelogo.png";
-import Button from "../Reusable/Button";
 import { Link } from "react-scroll";
 
 const Footer = () => {
@@ -38,11 +36,11 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="space-y-4"
           >
-            <div className="flex items-center bg-white w-fit rounded-md">
+            <div className="flex items-center w-fit rounded-md">
               <img
-                src="/assets/the-click-funnel-bg.jpg"
+                src="/assets/the-click-funnel-white.png"
                 alt="Click Funnel Logo"
-                className="h-16 w-26 object-contain transition-all duration-300 "
+                className="h-16 w-26 scale-125 object-contain transition-all duration-300 "
               />
             </div>
             <p className="text-gray-400">

@@ -3,6 +3,7 @@ import { Carousel, CarouselContent, CarouselItem } from "../Reusable/Carousel";
 import { Card, CardContent } from "../Reusable/Card";
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "../lib/utils";
+import Heading from "../Reusable/Heading";
 
 const portfolioItems = Array.from({ length: 10 }, (_, i) => ({
   id: i + 1,
@@ -30,10 +31,8 @@ export default function Portfolio() {
       className="relative w-full overflow-hidden bg-white rounded-t-4xl py-6 sm:py-10 px-6 sm:px-10"
     >
       <div className="text-center mb-4 max-w-7xl mx-auto">
-        <h2 className="text-2xl md:text-4xl font-bold text-black mb-4">
-          Portfolio
-        </h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        <Heading as={"h2"}>Portfolio</Heading>
+        <p className="text-lg text-gray-600 max-w-3xl lg:text-2xl mx-auto leading-relaxed">
           Take a look at some of our past projects to discover how our creative
           agency works and what we can do for you.
         </p>

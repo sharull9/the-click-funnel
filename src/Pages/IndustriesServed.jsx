@@ -19,6 +19,7 @@ import {
   Sprout,
   Briefcase,
 } from "lucide-react";
+import Heading from "../Reusable/Heading";
 
 const industries = [
   {
@@ -134,9 +135,9 @@ const IndustriesServed = () => {
             <span className="text-sm font-semibold text-black uppercase inline-block border border-gray-400 px-3 py-1 rounded-md mb-4">
               Our Expertise
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-black mb-6">
+            <Heading as="h2" className="mb-6">
               Industries We Have Served
-            </h2>
+            </Heading>
             <p className="text-lg text-gray-700 max-w-3xl">
               We've worked with diverse industries, bringing tailored digital
               marketing and design solutions to help them achieve success.

@@ -4,6 +4,7 @@ import { cn } from "../lib/utils";
 import { Alert, AlertDescription } from "../Reusable/Alert";
 import { Input } from "../Reusable/Input";
 import { Textarea } from "../Reusable/Textarea";
+import Heading from "../Reusable/Heading";
 
 const details = {
   phone: ["+91-8920658919", "+91-7011606003"],
@@ -60,9 +61,9 @@ export default function GetInTouchForm() {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="text-white space-y-8">
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                <Heading as="h2" className="mb-4 text-white">
                   Get in touch
-                </h2>
+                </Heading>
                 <p className="text-gray-200 text-lg leading-relaxed">
                   We’d love to hear from you. Let's talk about it!
                 </p>

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Heading from "../Reusable/Heading";
 
 const stats = [
   { value: "120+", label: "Active Clients" },
@@ -60,9 +61,9 @@ const ImpactAndTestimonials = () => {
             <span className="text-sm font-semibold text-black uppercase inline-block border border-gray-400 px-3 py-1 rounded-md mb-4">
               Our Impact So Far
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-black mb-8">
+            <Heading as="h2" className="mb-8">
               Making a Difference for Our Clients
-            </h2>
+            </Heading>
           </motion.div>
 
           <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -104,9 +105,9 @@ const ImpactAndTestimonials = () => {
             <span className="text-sm font-semibold text-black uppercase inline-block border border-gray-400 px-3 py-1 rounded-md mb-4">
               Client Voices
             </span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-black mb-6">
+            <Heading as="h2" className="mb-6">
               What Clients Say About Us
-            </h2>
+            </Heading>
             <p className="text-lg text-gray-600 max-w-3xl">
               Check out the glowing reviews from our clients who have trusted us
               to craft their brand stories and digital marketing strategies.
@@ -149,16 +150,9 @@ const ImpactAndTestimonials = () => {
                   "{testimonial.quote}"
                 </p>
                 <div className="border-t border-gray-100 pt-4">
-                  {testimonial.author && (
-                    <p className="font-semibold text-black">
-                      {testimonial.author}
-                    </p>
-                  )}
-                  {testimonial.company && (
-                    <p className="text-sm text-gray-500">
-                      {testimonial.company}
-                    </p>
-                  )}
+                  <p className="font-semibold text-black">
+                    {testimonial.author ?? testimonial.company}
+                  </p>
                 </div>
               </motion.div>
             ))}

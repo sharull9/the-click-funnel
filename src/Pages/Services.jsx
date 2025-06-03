@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { useInView } from "react-intersection-observer";
+import Heading from "../Reusable/Heading";
 
 const services = [
   {
@@ -75,9 +76,9 @@ const Services = () => {
             <span className="text-sm font-semibold text-black uppercase inline-block border border-gray-400 px-3 py-1 rounded-md">
               Our Services
             </span>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black pt-4">
+            <Heading as="h2" className="pt-4">
               Types of Presentation
-            </h2>
+            </Heading>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{

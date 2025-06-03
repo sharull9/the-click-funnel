@@ -11,10 +11,10 @@ import {
   Users,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import Button from "../Reusable/Button";
+import { FaWhatsapp } from "react-icons/fa";
+import { Link } from "../Reusable/Button";
 import RotatingLabels from "./RotatingLabels.jsx";
 import TextMaskAnimation from "./TextMaskAnimation";
-import { FaWhatsapp } from "react-icons/fa";
 
 const labels = [
   { text: "E-Commerce", color: "#1E90FF", icon: <Home size={16} /> },
@@ -39,12 +39,12 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-[100vh] pt-22 flex flex-col items-center bg-black overflow-hidden px-2">
+    <section className="relative w-full h-[100vh] pt-10 md:pt-32 flex flex-col items-center bg-black overflow-hidden px-2">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:20px_30px] [mask-image:radial-gradient(ellipse_100%_60%_at_50%_0%,#FEFDFD_80%,transparent_140%)]"></div>
 
-      <div className="relative w-[90%] sm:w-[85%] md:w-[95%] max-w-8xl mx-auto flex gap-4 text-white z-10 items-center h-full pb-6">
+      <div className="relative w-full sm:w-[85%] md:w-[95%] max-w-8xl mx-auto flex gap-4 text-white z-10 items-center h-full pb-6">
         <div className="relative flex flex-col md:flex-row justify-center items-start w-full gap-8">
-          <div className="w-full flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
+          <div className="w-full flex flex-col items-center justify-center text-center max-w-7xl mx-auto">
             <TextMaskAnimation />
             <motion.p
               className="w-full text-gray-300 max-w-[70%] text-lg lg:text-2xl mt-6"
@@ -56,18 +56,18 @@ const Hero = () => {
             </motion.p>
 
             <motion.div
-              className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4"
+              className="mt-8 grid grid-cols-2 gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
             >
-              <Button
+              <Link
                 to="#contactus"
                 text="Start Project"
-                className="w-full sm:w-fit bg-white text-black hover:bg-gray-200 transition-colors"
+                className="w-full sm:w-fit bg-white text-black hover:text-gray-800 hover:bg-gray-200 transition-colors"
                 icon={Users}
               />
-              <Button
+              <Link
                 to={"https://wa.me/918920658919"}
                 text="Whatsapp Us"
                 className="w-full sm:w-fit bg-green-700 text-white hover:bg-green-600 transition-colors"

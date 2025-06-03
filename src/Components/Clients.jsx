@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Heading from "../Reusable/Heading";
 
 const Clients = () => {
   const companies = [
@@ -47,9 +48,9 @@ const Clients = () => {
         animate={{ opacity: 1, filter: "blur(0px)" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h2 className="text-lg sm:text-2xl font-bold text-black leading-snug">
-          Trusted By Leading Entrepreneurs & Investors
-        </h2>
+        <Heading as={"h2"}>
+          Trusted By Leading <br /> Entrepreneurs & Investors
+        </Heading>
       </motion.div>
 
       <div className="relative h-[120px] sm:h-[140px] flex items-center">
