@@ -46,12 +46,12 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] z-50 transition-all duration-300 rounded lg:rounded-full border overflow-hidden shadow-lg container mx-auto",
+        "fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] z-50 transition-all duration-300 rounded lg:rounded-full border shadow-lg container mx-auto",
         isScrolled ? "bg-white/90 backdrop-blur-lg" : "bg-white"
       )}
     >
-      <div className=" px-4 sm:px-6">
-        <div className="flex justify-between items-center  relative">
+      <div className="px-4 sm:px-6">
+        <div className="flex justify-between items-center relative">
           {/* Logo */}
           <a href="/" className="z-50 overflow-hidden">
             <img
@@ -115,7 +115,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                className="absolute left-[-5%] right-[-5%] top-full w-[110%] bg-white shadow-xl z-40 mt-4 rounded-2xl overflow-hidden md:hidden"
+                className="fixed left-[-5%] z-50 right-[-5%] top-full w-[110%] bg-white shadow-xl mt-4 rounded-2xl"
               >
                 <div className="flex flex-col p-4 space-y-2">
                   {navLinks.map((link) => (
@@ -126,11 +126,12 @@ const Navbar = () => {
                       duration={600}
                       spy={true}
                       offset={-80}
-                      className={`py-3 px-4 rounded-lg transition-colors duration-300 font-medium text-center  ${
+                      className={cn(
+                        "py-2 px-4 rounded-lg transition-colors duration-300 font-medium text-center",
                         activeSection === link.id
-                          ? "bg-gray-100 text-black font-semibold "
+                          ? "bg-gray-100 text-black font-semibold"
                           : "text-gray-600 hover:bg-gray-50"
-                      }`}
+                      )}
                       onClick={() => setIsOpen(false)} // Close menu on click
                     >
                       {link.name}
